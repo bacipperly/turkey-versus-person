@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#3b2412">
+  <meta name="description" content="Turkey versus Person: a 10-second Thanksgiving stacking race.">
+  <title>Turkey versus Person</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦃</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-state="title">
+  <div id="stage">
+    <div id="bg" aria-hidden="true"></div>
+    <div id="leaves" aria-hidden="true"></div>
+    <div id="snap-hint" aria-hidden="true"><div class="snap-top"></div><div class="snap-col"></div></div>
+
+    <div class="side" id="side-player" aria-hidden="true">
+      <div class="world" id="world-player">
+        <div class="feathers" id="feathers"></div>
+        <div class="buddy" id="buddy1"></div>
+        <div class="buddy" id="buddy2"></div>
+        <div class="pieces" id="pieces-player"></div>
+        <div class="food-head" id="food-head"></div>
+      </div>
+    </div>
+    <div class="side" id="side-computer" aria-hidden="true">
+      <div class="world" id="world-computer">
+        <div class="pieces" id="pieces-computer"></div>
+        <div class="builder" id="builder"></div>
+      </div>
+    </div>
+
+    <div id="tray" aria-label="Food tray: drag food up onto your stack"></div>
+    <div class="tape" id="tape-player"><span class="tape-label">0</span></div>
+    <div class="tape" id="tape-computer"><span class="tape-label">0</span></div>
+    <div class="score" id="score-player" aria-label="Turkey Team height">0</div>
+    <div class="score" id="score-computer" aria-label="Person Team height">0</div>
+
+    <div id="hud">
+      <div class="team-label left"><span class="mini" id="label-turkey"></span>Turkey Team</div>
+      <div class="team-label right"><span class="mini" id="label-house"></span>Person Team</div>
+      <div id="timer" role="timer"><div id="timer-num">10</div><div id="timer-bar"><div id="timer-fill"></div></div></div>
+    </div>
+
+    <div id="drag-layer"></div>
+    <div id="countdown" aria-live="assertive"></div>
+    <div id="tie-msg" role="status" hidden>It's a tie!</div>
+    <div id="confetti" aria-hidden="true"></div>
+
+    <section id="screen-title" class="screen" aria-label="Title">
+      <div class="panel title-panel">
+        <div class="title-row">
+          <div class="title-turkey" id="title-turkey"></div>
+          <h1>Turkey<br><span>versus</span><br>Person</h1>
+          <div class="title-builder" id="title-builder"></div>
+        </div>
+        <div class="diff-row" role="group" aria-label="Difficulty">
+          <button class="btn diff-btn" data-diff="easy">Easy <span class="stars">★</span></button>
+          <button class="btn diff-btn" data-diff="medium">Medium <span class="stars">★★</span></button>
+          <button class="btn diff-btn" data-diff="hard">Hard <span class="stars">★★★</span></button>
+        </div>
+        <button id="btn-play" class="btn big">Play!</button>
+        <div class="title-foot">
+          <div class="trophies" aria-label="Trophies won"><span id="title-trophy-icon"></span>× <b id="trophy-count">0</b></div>
+          <div>Best: <b id="best-score">0</b></div>
+          <button id="btn-howto" class="btn small" aria-label="How to play">?</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-howto" class="screen" aria-label="How to play" hidden>
+      <div class="panel howto-panel">
+        <div class="demo" aria-hidden="true">
+          <div class="demo-ground"></div>
+          <div class="demo-stack" id="demo-stack"></div>
+          <div class="demo-drag"><div class="demo-piece" id="demo-piece"></div><div class="demo-finger">👆</div></div>
+        </div>
+        <p class="howto-text">Stack it taller than the house in 10 seconds!</p>
+        <button id="btn-gotit" class="btn big">Got it!</button>
+      </div>
+    </section>
+
+    <section id="screen-results" class="screen" aria-label="Results" hidden>
+      <div class="panel results-panel">
+        <h2 id="result-title">You win!</h2>
+        <div class="result-scores">
+          <div class="rs" id="rs-col-player"><div class="rs-icon" id="rs-turkey"></div><div class="rs-num" id="rs-player">0</div></div>
+          <div class="rs-vs">vs</div>
+          <div class="rs" id="rs-col-computer"><div class="rs-icon" id="rs-house"></div><div class="rs-num" id="rs-computer">0</div></div>
+        </div>
+        <div id="result-trophy" class="result-trophy" aria-label="The Building Trophy"></div>
+        <div class="result-buttons">
+          <button id="btn-again" class="btn big">Play again</button>
+          <button id="btn-menu" class="btn small">Menu</button>
+        </div>
+      </div>
+    </section>
+
+    <button id="btn-mute" aria-label="Mute sound"></button>
+  </div>
+
+  <div id="rotate-hint" role="alert">
+    <div class="phone"></div>
+    <p>Turn your phone sideways to play!</p>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
